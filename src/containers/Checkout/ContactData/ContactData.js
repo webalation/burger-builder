@@ -99,7 +99,7 @@ class ContactData extends Component {
             key={formElement.id}
             elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
-            value={formElement.config.elementConfig}
+            value={formElement.config.value}
           />
         ))}
         <Button btnType="Success" clicked={this.orderHandler}>
