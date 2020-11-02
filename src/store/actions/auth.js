@@ -1,6 +1,7 @@
 import axios from "axios";
-
 import * as actionTypes from "./actionTypes";
+
+const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
 export const authStart = () => {
   return {
@@ -49,15 +50,16 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true,
     };
     let url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBdliVACIThzKNCgRpCsyUSsnkaUVbJ49M";
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+      firebaseApiKey;
     if (!isSignup) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBdliVACIThzKNCgRpCsyUSsnkaUVbJ49M";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+        firebaseApiKey;
     }
     axios
       .post(url, authData)
       .then((response) => {
-        console.log(response);
         const expirationDate = new Date(
           new Date().getTime() + response.data.expiresIn * 1000
         );
