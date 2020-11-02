@@ -3,10 +3,6 @@ import React, { Component } from "react";
 import Button from "../../UI/Button/Button";
 
 class OrderSummary extends Component {
-  componentDidUpdate() {
-    console.log("[OrderSummary] WillUpdate");
-  }
-
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map(
       (igKey) => {
@@ -18,6 +14,7 @@ class OrderSummary extends Component {
         );
       }
     );
+
     return (
       <React.Fragment>
         <h3>Your Order</h3>
